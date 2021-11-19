@@ -38,12 +38,14 @@ public class Menu {
                     subMenu(op);
                     break;
                 case 4: //4 - Ver Passageiro
+                    subMenu(op);
                     break;
                 case 5: //5 - Alterar Vôo
                     break;
                 case 6: //6 - Alterar Passageiro
                     break;
                 case 7: //7 - Excluir Vôo
+                    airlinesService.dropFlight();
                     break;
                 case 8: //8 - Excluir Passageiro
                     break;
@@ -71,31 +73,56 @@ public class Menu {
                       "3 - Ver o vôo com menos passageiros\n" +
                       "4 - Ver o vôo mais longo\n" +
                       "5 - Ver o vôo mais curto\n" +
-                      "6 - Ver a média de ocupação dos vôos");
+                      "6 - Ver a média de ocupação dos vôos\n"
+                    + "0 - Sair");
             int subOp = in.nextInt();
             switch (subOp) {
                 case 1: //1 - Ver todos os vôos
                     System.out.println(airlinesService.getAllFlights());
                     break;
                 case 2: //2 - Ver os vôos com mais passageiros (assentos ocupados)
-
+                    //TODO implementar metodo
                     break;
                 case 3: //3 - Ver o vôo com menos passageiros
-
+                    System.out.println(airlinesService.getLessPassangersFlight());
                     break;
                 case 4: //4 - Ver o vôo mais longo
-
+                    //TODO implementar metodo
                     break;
                 case 5: //5 - Ver o vôo mais curto
-
+                    //TODO implementar metodo
                     break;
                 case 6: //6 - Ver a média de ocupação dos vôos
-
+                    //TODO implementar metodo
                     break;
+                case 0: //0 - Sair
+                    break;
+                default:
+                    System.out.println("Resposta inválida");
+                    break;
+
             }
         }
         else if(op==4){
-            return;
+            printLineSeparator();
+            System.out.println("Digite a sub opção desejada \n"
+                    + "1 - Ver todos os passageiros\n" +
+                      "2 - Buscar por vôo (exibe todos os passageiros)\n"
+                    + "0 - Sair");
+            int subOp = in.nextInt();
+            switch (subOp) {
+                case 1: //1 - Ver todos os passageiros
+                    System.out.println(airlinesService.getAllPassangers());
+                    break;
+                case 2: //2 - buscar por vôo (exibe todos os passageiros)
+                    //TODO implementar metodo
+                    break;
+                case 0: //0 - Sair
+                    break;
+                default:
+                    System.out.println("Resposta inválida");
+                    break;
+            }
         }
     }
 }

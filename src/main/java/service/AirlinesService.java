@@ -4,6 +4,7 @@ import entity.Flight;
 import entity.Passanger;
 import repository.AirlineRepository;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,5 +44,20 @@ public class AirlinesService {
 
     public List<Passanger> getAllPassangers(){
         return airlineRepository.getSavedPassangers();
+    }
+
+    public Flight getLessPassangersFlight() {
+        return airlineRepository.getLessPassangerFlight();
+    }
+
+    public void dropFlight() {
+        System.out.println("Id do vôo que deseja excluir: ");
+        Integer flightDrop = in.nextInt();
+        boolean result = airlineRepository.dropFlight(flightDrop);
+        if(result){
+            System.out.println("Deletado com sucesso!");
+        }
+        else
+            System.out.println("Erro ao deletar");
     }
 }
