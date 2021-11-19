@@ -35,7 +35,7 @@ public class AirlineRepository {
         this.savedFlights = savedFlights;
     }
 
-    public List<Passanger> getSavedPassanger() {
+    public List<Passanger> getSavedPassangers() {
         return savedPassanger;
     }
 

@@ -4,13 +4,14 @@ import entity.Flight;
 import entity.Passanger;
 import repository.AirlineRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class AirlinesService {
     public AirlineRepository airlineRepository = new AirlineRepository();
     public Scanner in = new Scanner(System.in);
-    public Flight flight;
-    public Passanger passanger;
+    public Flight flight = new Flight();
+    public Passanger passanger = new Passanger();
 
     public void saveFlight(){
         //reune as infos do voo
@@ -34,5 +35,13 @@ public class AirlinesService {
 
         //salva o voo na lista de voos, usando o repositorio
         airlineRepository.savePassanger(passanger);
+    }
+
+    public List<Flight> getAllFlights(){
+        return airlineRepository.getSavedFlights();
+    }
+
+    public List<Passanger> getAllPassangers(){
+        return airlineRepository.getSavedPassangers();
     }
 }
