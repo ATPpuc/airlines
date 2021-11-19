@@ -52,7 +52,7 @@ public class Menu {
                 case 0: //0 - Sair
                     break;
                 default:
-                    System.out.println("Resposta inválida");
+                    System.out.println("Resposta inválida!");
                     break;
             }
         }
