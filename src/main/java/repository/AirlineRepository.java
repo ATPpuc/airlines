@@ -119,4 +119,30 @@ public class AirlineRepository {
         }
         return false;
     }
+
+    public Passanger[] getAllPassangers() {
+        int passangersNumber = 0;
+
+        for (Flight flight : flights) {
+            passangersNumber += flight.getOccupiedSeats();
+        }
+        if (passangersNumber == 0){
+            return null;
+        }
+        Passanger[] passangers = new Passanger[passangersNumber];
+        for (int i=0; i< flights.length; i++){
+            passangers[i] = flights[i].getPassangers()[i];
+        }
+        return passangers;
+    }
+
+    public void getSavedFlightsToString() {
+        Flight[] flights = getSavedFlights();
+        for (int i = 0; i< flights.length; i++){
+            System.out.println("Id: " + flights[i].getId());
+            System.out.println("Distancia: " + flights[i].getDistance());
+            System.out.println("Assentos: " + flights[i].getSeats());
+            System.out.println("Assentos Ocupados: " + flights[i].getOccupiedSeats());
+        }
+    }
 }

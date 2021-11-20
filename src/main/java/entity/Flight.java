@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Arrays;
+
 public class Flight {
     private int id;
     private double distance;
@@ -10,9 +12,11 @@ public class Flight {
     @Override
     public String toString() {
         return "Flight{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", distance=" + distance +
                 ", seats=" + seats +
+                ", passangers=" + Arrays.toString(passangers) +
+                ", occupiedSeats=" + occupiedSeats +
                 '}';
     }
 

@@ -2,6 +2,7 @@ package utils;
 
 import service.AirlinesService;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -41,8 +42,10 @@ public class Menu {
                     subMenu(op);
                     break;
                 case 5: //5 - Alterar Vôo
+                    airlinesService.updateFlight();
                     break;
                 case 6: //6 - Alterar Passageiro
+                    airlinesService.updatePassanger();
                     break;
                 case 7: //7 - Excluir Vôo
                     airlinesService.dropFlight();
@@ -79,13 +82,13 @@ public class Menu {
             int subOp = in.nextInt();
             switch (subOp) {
                 case 1: //1 - Ver todos os vôos
-                    System.out.println(airlinesService.getAllFlights());
+                    airlinesService.getAllFlights();
                     break;
                 case 2: //2 - Ver os vôos com mais passageiros (assentos ocupados)
                     //TODO implementar metodo
                     break;
                 case 3: //3 - Ver o vôo com menos passageiros
-                    System.out.println(airlinesService.getLessPassangersFlight());
+                    airlinesService.getLessPassangersFlight();
                     break;
                 case 4: //4 - Ver o vôo mais longo
                     //TODO implementar metodo
@@ -97,6 +100,7 @@ public class Menu {
                     //TODO implementar metodo
                     break;
                 case 0: //0 - Sair
+                    mainMenu();
                     break;
                 default:
                     System.out.println("Resposta inválida");
@@ -113,12 +117,13 @@ public class Menu {
             int subOp = in.nextInt();
             switch (subOp) {
                 case 1: //1 - Ver todos os passageiros
-                    System.out.println(airlinesService.getAllPassangers());
+                    System.out.println(Arrays.toString(airlinesService.getAllPassangers()));
                     break;
                 case 2: //2 - buscar por vôo (exibe todos os passageiros)
                     //TODO implementar metodo
                     break;
                 case 0: //0 - Sair
+                    mainMenu();
                     break;
                 default:
                     System.out.println("Resposta inválida");

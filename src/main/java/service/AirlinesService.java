@@ -2,9 +2,11 @@ package service;
 
 import entity.Flight;
 import entity.Passanger;
+import jdk.jfr.FlightRecorderListener;
 import repository.AirlineRepository;
 
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,18 +34,24 @@ public class AirlinesService {
         System.out.println("Id do Passageiro:");
         passanger.setId(in.nextInt());
         System.out.println("Nome do Passageiro");
-        passanger.setName(in.nextLine());
+        passanger.setName(in.next());
+        in.nextLine();
 
         //salva o voo na lista de voos, usando o repositorio
         airlineRepository.savePassanger(passanger);
     }
 
-    public Flight[] getAllFlights(){
-        return airlineRepository.getSavedFlights();
+    public void getAllFlights(){
+        airlineRepository.getSavedFlightsToString();
     }
 
-    public Flight getLessPassangersFlight() {
-        return airlineRepository.getLessPassangerFlight();
+    public Passanger[] getAllPassangers(){
+        return airlineRepository.getAllPassangers();
+    }
+
+    public void getLessPassangersFlight() {
+        Flight flight = airlineRepository.getLessPassangerFlight();
+        System.out.println(flight.toString());
     }
 
     public void dropFlight() {
