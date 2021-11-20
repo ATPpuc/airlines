@@ -10,47 +10,85 @@ import java.util.Optional;
 
 public class AirlineRepository {
 
-    List<Flight> savedFlights = new ArrayList<>();
-    List<Passanger> savedPassanger = new ArrayList<>();
+    Flight[] flights = new Flight[0];
+//    List<Flight> savedFlights = new ArrayList<>();
+//    List<Passanger> savedPassanger = new ArrayList<>();
 
     public void saveFlight(Flight flight){
-        savedFlights.add(flight);
+        // cria um array com o tamanho do anterior incrementado de 1, e adiciona no fim o voo passado por parametro
+        Flight[] flightsTemp = new Flight[flights.length+1];
+        for (int i = 0; i < flights.length; i++){
+          flightsTemp[i] = flights[i];
+        }
+        flightsTemp[flightsTemp.length-1] = flight;
+        flights = flightsTemp;
     }
 
     public void savePassanger(Passanger passanger){
-        savedPassanger.add(passanger);
+        int targetFlight = -1;
+        for(int i=0; i < flights.length;i++){
+            if (flights[i].getSeats()>flights[i].getOccupiedSeats()){
+                targetFlight =i;
+                break;
+            }
+        }
+        if (targetFlight==-1){
+            throw new RuntimeException("Sem voos disponiveis :)");
+        }
+        flights[targetFlight].addPassanger(passanger);
     }
 
-    public boolean dropPassanger(Integer id){
-        return savedPassanger.removeIf(passanger -> passanger.getId().equals(id));
+    public boolean dropPassanger(int id) {
+
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i].removePassanger(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean dropFlight(Integer id){
-        return savedFlights.removeIf(flight -> flight.getId().equals(id));
+        int target = -1;
+
+        for (int i = 0; i< flights.length;i++){
+            if (flights[i].getId() == id){
+                target = i;
+                break;
+            }
+        }
+
+        if (target==-1){
+            return false;
+        }
+
+        Flight[] flightTemp= new Flight[flights.length-1];
+
+        for (int i = 0; i<flightTemp.length ;i++){
+            if (i>= target){
+                flightTemp[i] = flights[i+1];
+            }
+            else{
+                flightTemp[i] = flights[i];
+            }
+        }
+        flights = flightTemp;
+        return true;
     }
 
-    public List<Flight> getSavedFlights() {
-        return savedFlights;
+    public Flight[] getSavedFlights() {
+       return flights;
     }
 
     public Flight getLessPassangerFlight(){
-        Optional<Flight> optionalLessPassangerFlight;
-        List<Flight> flights = getSavedFlights();
-        optionalLessPassangerFlight = flights.stream().min(Comparator.comparing(Flight::getSeats));
-        Flight lessPassangerFlight = optionalLessPassangerFlight.get();
+        Flight lessPassangerFlight = null;
+
+        for(int i = 0; i < flights.length; i++){
+            if (lessPassangerFlight == null ||
+                    flights[i].getOccupiedSeats() < lessPassangerFlight.getOccupiedSeats()){
+               lessPassangerFlight = flights[i];
+            }
+        }
         return lessPassangerFlight;
     }
-
-    public void setSavedFlights(List<Flight> savedFlights) {
-        this.savedFlights = savedFlights;
-    }
-
-    public List<Passanger> getSavedPassangers() {
-        return savedPassanger;
-    }
-
-    public void setSavedPassanger(List<Passanger> savedPassanger) {
-        this.savedPassanger = savedPassanger;
-    }
-
 }

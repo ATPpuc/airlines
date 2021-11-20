@@ -48,6 +48,7 @@ public class Menu {
                     airlinesService.dropFlight();
                     break;
                 case 8: //8 - Excluir Passageiro
+                    airlinesService.dropPassanger();
                     break;
                 case 0: //0 - Sair
                     break;

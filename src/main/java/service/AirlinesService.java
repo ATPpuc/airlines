@@ -11,18 +11,18 @@ import java.util.Scanner;
 public class AirlinesService {
     public AirlineRepository airlineRepository = new AirlineRepository();
     public Scanner in = new Scanner(System.in);
-    public Flight flight = new Flight();
     public Passanger passanger = new Passanger();
 
     public void saveFlight(){
         //reune as infos do voo
-        System.out.println("Distância do vôo:");
-        flight.setDistance(in.nextDouble());
-        System.out.println("Quantidade de assentos disponíveis");
-        flight.setSeats(in.nextInt());
-        System.out.println("Id do Vôo:");
-        flight.setId(in.nextInt());
 
+        System.out.println("Distância do vôo:");
+        double distance = in.nextDouble();
+        System.out.println("Quantidade de assentos disponíveis");
+        int seats = in.nextInt();
+        System.out.println("Id do Vôo:");
+        int id = in.nextInt();
+        Flight flight = new Flight(id, distance, seats);
         //salva o voo na lista de voos, usando o repositorio
         airlineRepository.saveFlight(flight);
     }
@@ -38,12 +38,8 @@ public class AirlinesService {
         airlineRepository.savePassanger(passanger);
     }
 
-    public List<Flight> getAllFlights(){
+    public Flight[] getAllFlights(){
         return airlineRepository.getSavedFlights();
-    }
-
-    public List<Passanger> getAllPassangers(){
-        return airlineRepository.getSavedPassangers();
     }
 
     public Flight getLessPassangersFlight() {
@@ -54,6 +50,17 @@ public class AirlinesService {
         System.out.println("Id do vôo que deseja excluir: ");
         Integer flightDrop = in.nextInt();
         boolean result = airlineRepository.dropFlight(flightDrop);
+        if(result){
+            System.out.println("Deletado com sucesso!");
+        }
+        else
+            System.out.println("Erro ao deletar");
+    }
+
+    public void dropPassanger() {
+        System.out.println("Id do passageiro que deseja excluir: ");
+        Integer passangerDrop = in.nextInt();
+        boolean result = airlineRepository.dropPassanger(passangerDrop);
         if(result){
             System.out.println("Deletado com sucesso!");
         }
