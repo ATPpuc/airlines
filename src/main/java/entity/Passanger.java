@@ -2,12 +2,12 @@ package entity;
 
 public class Passanger {
     private String name;
-    private Integer id;
+    private int id;
 
     public Passanger() {
     }
 
-    public Passanger(String name, Integer id) {
+    public Passanger(String name, int id) {
         this.name = name;
         this.id = id;
     }
@@ -20,11 +20,11 @@ public class Passanger {
         this.name = name;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

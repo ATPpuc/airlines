@@ -67,4 +67,22 @@ public class AirlinesService {
         else
             System.out.println("Erro ao deletar");
     }
+
+    public void updatePassanger(){
+        System.out.println("Insira o Id do passageiro que deseja alterar:");
+        int id = in.nextInt();
+        in.nextLine();
+        System.out.println("insira o novo nome:");
+        String nome = in.nextLine();
+
+        boolean result = airlineRepository.updatePassanger(id, nome);
+        if (result)
+            System.out.println("Alterado com sucesso!");
+        else
+            System.out.println("Erro ao alterar");
+    }
+
+    public void updateFlight(){
+
+    }
 }
