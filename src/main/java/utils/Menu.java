@@ -91,7 +91,7 @@ public class Menu {
                     airlinesService.getLessPassangersFlight(); //alterar logica
                     break;
                 case 4: //4 - Ver o vôo mais longo
-                    //TODO implementar metodo --alex
+                    airlinesService.getMaxDistanceFlight();
                     break;
                 case 5: //5 - Ver o vôo mais curto
                     //TODO implementar --fernada

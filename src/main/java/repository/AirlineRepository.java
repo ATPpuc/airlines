@@ -153,4 +153,21 @@ public class AirlineRepository {
         System.out.println("Ahh, achei, olha aqui seu voo:" +
                         Arrays.toString(flight.getPassangers()));
     }
+
+    public Flight getMaxDistanceFlight(){
+        Flight maior = null;
+
+        if (flights.length == 0){
+            return null;
+        }
+
+        maior=flights[0];
+
+        for (int i = 0 ; i < flights.length ; i++) {
+            if(flights[i].getDistance() > maior.getDistance()) {
+                maior = flights[i];
+            }
+        }
+        return maior;
+    }
 }

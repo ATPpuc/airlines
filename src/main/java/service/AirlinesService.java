@@ -6,7 +6,9 @@ import jdk.jfr.FlightRecorderListener;
 import repository.AirlineRepository;
 
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -98,5 +100,16 @@ public class AirlinesService {
         System.out.println("Qual a id do voo que o sr quer buscar todos os passageiros?");
         int idFlight = in.nextInt();
         airlineRepository.findAllPassengersByFlight(idFlight);
+    }
+
+    public void getMaxDistanceFlight(){
+        System.out.println("Analisando o voo mais longo..");
+        Flight maxDistanceFlight = airlineRepository.getMaxDistanceFlight();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(maxDistanceFlight.toString());
     }
 }
