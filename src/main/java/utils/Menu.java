@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("Digite a opção que você deseja:" +
                     "\n1 - Cadastrar Vôo" +
                     "\n2 - Cadastrar Passageiro" +
-                    "\n3 - Ver Vôo" +
+                    "\n3 - Ver Vôo" + //chama um submenu
                     "\n4 - Ver Passageiro" + //chama um submenu
                     "\n5 - Alterar Vôo" +
                     "\n6 - Alterar Passageiro" +
@@ -42,10 +42,10 @@ public class Menu {
                     subMenu(op);
                     break;
                 case 5: //5 - Alterar Vôo
-                    airlinesService.updateFlight();
+                    airlinesService.updateFlight(); //check
                     break;
                 case 6: //6 - Alterar Passageiro
-                    airlinesService.updatePassanger();
+                    airlinesService.updatePassanger(); //check
                     break;
                 case 7: //7 - Excluir Vôo
                     airlinesService.dropFlight();
@@ -85,19 +85,19 @@ public class Menu {
                     airlinesService.getAllFlights();
                     break;
                 case 2: //2 - Ver os vôos com mais passageiros (assentos ocupados)
-                    //TODO implementar metodo
+                    //TODO implementar metodo --andre
                     break;
                 case 3: //3 - Ver o vôo com menos passageiros
-                    airlinesService.getLessPassangersFlight();
+                    airlinesService.getLessPassangersFlight(); //alterar logica
                     break;
                 case 4: //4 - Ver o vôo mais longo
-                    //TODO implementar metodo
+                    //TODO implementar metodo --alex
                     break;
                 case 5: //5 - Ver o vôo mais curto
-                    //TODO implementar
+                    //TODO implementar --fernada
                     break;
                 case 6: //6 - Ver a média de ocupação dos vôos
-                    //TODO implementar metodo
+                    //TODO implementar metodo --ted
                     break;
                 case 0: //0 - Sair
                     mainMenu();
@@ -108,6 +108,7 @@ public class Menu {
 
             }
         }
+
         else if(op==4){
             printLineSeparator();
             System.out.println("Digite a sub opção desejada \n"
@@ -120,7 +121,8 @@ public class Menu {
                     System.out.println(Arrays.toString(airlinesService.getAllPassangers()));
                     break;
                 case 2: //2 - buscar por vôo (exibe todos os passageiros)
-                    //TODO implementar metodo
+                    //TODO implementar metodo --ted
+                    airlinesService.findAllPassengers();
                     break;
                 case 0: //0 - Sair
                     mainMenu();

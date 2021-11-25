@@ -35,7 +35,8 @@ public class Flight {
 
         if (target==-1){
             return false;
-        }
+        }//acaba aq caso ele nao encontre nada
+        //senao, o codigo segue
         passangers[target] = null;
 
         for (int i = target+1; i<occupiedSeats;i++){

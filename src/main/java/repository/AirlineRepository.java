@@ -4,14 +4,13 @@ import entity.Flight;
 import entity.Passanger;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+
 
 public class AirlineRepository {
     Flight[] flights = new Flight[0];
-//    List<Flight> savedFlights = new ArrayList<>();
-//    List<Passanger> savedPassanger = new ArrayList<>();
+
 
     public Passanger findPassanger(int id){
         for (int i = 0; i < flights.length; i++){
@@ -144,5 +143,14 @@ public class AirlineRepository {
             System.out.println("Assentos: " + flights[i].getSeats());
             System.out.println("Assentos Ocupados: " + flights[i].getOccupiedSeats());
         }
+    }
+
+    public void findAllPassengersByFlight(int idFlight){
+        //TODO metodo;
+        System.out.println("implementar metodo");
+
+        Flight flight = findFlight(idFlight);
+        System.out.println("Ahh, achei, olha aqui seu voo:" +
+                        Arrays.toString(flight.getPassangers()));
     }
 }

@@ -67,7 +67,7 @@ public class AirlinesService {
 
     public void dropPassanger() {
         System.out.println("Id do passageiro que deseja excluir: ");
-        Integer passangerDrop = in.nextInt();
+        int passangerDrop = in.nextInt();
         boolean result = airlineRepository.dropPassanger(passangerDrop);
         if(result){
             System.out.println("Deletado com sucesso!");
@@ -92,5 +92,11 @@ public class AirlinesService {
 
     public void updateFlight(){
 
+    }
+
+    public void findAllPassengers(){
+        System.out.println("Qual a id do voo que o sr quer buscar todos os passageiros?");
+        int idFlight = in.nextInt();
+        airlineRepository.findAllPassengersByFlight(idFlight);
     }
 }
