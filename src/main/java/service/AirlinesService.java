@@ -105,11 +105,12 @@ public class AirlinesService {
     public void getMaxDistanceFlight(){
         System.out.println("Analisando o voo mais longo..");
         Flight maxDistanceFlight = airlineRepository.getMaxDistanceFlight();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         System.out.println(maxDistanceFlight.toString());
+    }
+
+    public void getMaxOccupiedSeatsFlight() {
+        System.out.println("Analisando voo com mais assentos ocupados...");
+        Flight flight = airlineRepository.getMaxOccupiedSeatsFlight();
+        System.out.println(flight.toString());
     }
 }

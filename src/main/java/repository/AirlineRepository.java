@@ -170,4 +170,15 @@ public class AirlineRepository {
         }
         return maior;
     }
+
+    public Flight getMaxOccupiedSeatsFlight() {
+        Flight maxOccupiedSeats = flights[0];
+
+        for (int i=0; i < flights.length; i++){
+            if (flights[i].getOccupiedSeats() > maxOccupiedSeats.getOccupiedSeats()){
+                maxOccupiedSeats = flights[i];
+            }
+        }
+        return maxOccupiedSeats;
+    }
 }

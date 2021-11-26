@@ -85,7 +85,7 @@ public class Menu {
                     airlinesService.getAllFlights();
                     break;
                 case 2: //2 - Ver os vôos com mais passageiros (assentos ocupados)
-                    //TODO implementar metodo --andre
+                    airlinesService.getMaxOccupiedSeatsFlight();
                     break;
                 case 3: //3 - Ver o vôo com menos passageiros
                     airlinesService.getLessPassangersFlight(); //alterar logica
