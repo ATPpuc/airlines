@@ -43,9 +43,10 @@ public class AirlineRepository {
 
     //so salva um passageiro se existe um voo disponivel pra ele
     public void savePassanger(Passanger passanger){
+
         int targetFlight = -1;
         for(int i=0; i < flights.length;i++){
-            if (flights[i].getSeats()>flights[i].getOccupiedSeats()){
+            if (flights[i].getSeats() > flights[i].getOccupiedSeats()){
                 targetFlight =i;
                 break;
             }
@@ -119,20 +120,29 @@ public class AirlineRepository {
         return false;
     }
 
-    public Passanger[] getAllPassangers() {
+    public void getAllPassangers() {
         int passangersNumber = 0;
 
         for (Flight flight : flights) {
             passangersNumber += flight.getOccupiedSeats();
         }
         if (passangersNumber == 0){
-            return null;
+            System.out.println("Sem passageiros :(");
         }
+
         Passanger[] passangers = new Passanger[passangersNumber];
-        for (int i=0; i< flights.length; i++){
-            passangers[i] = flights[i].getPassangers()[i];
+        int passangerIndex = 0;
+
+        for (int i=0; i < flights.length; i++){
+            for(int j=0; j<flights[i].getPassangers().length; j++){
+                passangers[passangerIndex] = flights[i].getPassangers()[j];
+                passangerIndex++;
+            }
         }
-        return passangers;
+        for (int i = 0; i< passangers.length; i++){
+            System.out.println("Id: " + passangers[i].getId());
+            System.out.println("Nome: " + passangers[i].getName());
+        }
     }
 
     public void getSavedFlightsToString() {

@@ -118,7 +118,7 @@ public class Menu {
             int subOp = in.nextInt();
             switch (subOp) {
                 case 1: //1 - Ver todos os passageiros
-                    System.out.println(Arrays.toString(airlinesService.getAllPassangers()));
+                    airlinesService.getAllPassangers();
                     break;
                 case 2: //2 - buscar por vôo (exibe todos os passageiros)
                     //TODO implementar metodo --ted

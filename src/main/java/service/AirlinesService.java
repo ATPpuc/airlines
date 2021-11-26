@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class AirlinesService {
     public AirlineRepository airlineRepository = new AirlineRepository();
     public Scanner in = new Scanner(System.in);
-    public Passanger passanger = new Passanger();
 
     public void saveFlight(){
         //reune as infos do voo
@@ -33,6 +32,7 @@ public class AirlinesService {
 
     public void savePassanger(){
         //reune as infos do passanger
+        Passanger passanger = new Passanger();
         System.out.println("Id do Passageiro:");
         passanger.setId(in.nextInt());
         System.out.println("Nome do Passageiro");
@@ -47,8 +47,8 @@ public class AirlinesService {
         airlineRepository.getSavedFlightsToString();
     }
 
-    public Passanger[] getAllPassangers(){
-        return airlineRepository.getAllPassangers();
+    public void getAllPassangers(){
+        airlineRepository.getAllPassangers();
     }
 
     public void getLessPassangersFlight() {
@@ -111,6 +111,9 @@ public class AirlinesService {
     public void getMaxOccupiedSeatsFlight() {
         System.out.println("Analisando voo com mais assentos ocupados...");
         Flight flight = airlineRepository.getMaxOccupiedSeatsFlight();
-        System.out.println(flight.toString());
+        System.out.println("Id do Voo: " + flight.getId());
+        System.out.println("Distancia do voo: " + flight.getDistance());
+        System.out.println("Assentos ocupados: "+ flight.getOccupiedSeats());
+        System.out.println("Passageiros: " + Arrays.toString(flight.getPassangers()));
     }
 }
