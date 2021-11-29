@@ -147,6 +147,13 @@ public class AirlinesService {
         System.out.println(maxDistanceFlight.toString());
     }
 
+    //pea o voo que tem a menor distancia
+    public void getShortDistanceFlight(){
+        System.out.println("Analisando o voo mais curto..");
+        Flight shortDistanceFlight = airlineRepository.getShortDistanceFlight();
+        System.out.println(shortDistanceFlight.toString());
+    }
+
     //pega o voo que tem a maior taxa de ocupaçao
     public void getMaxOccupiedSeatsFlight() {
         System.out.println("Analisando voo com mais assentos ocupados...");

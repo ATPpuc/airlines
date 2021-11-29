@@ -94,7 +94,7 @@ public class Menu {
                     airlinesService.getMaxDistanceFlight();
                     break;
                 case 5: //5 - Ver o vôo mais curto
-                    //TODO implementar --fernada
+                    airlinesService.getShortDistanceFlight();
                     break;
                 case 6: //6 - Ver a média de ocupação dos vôos
                     //TODO implementar metodo --ted

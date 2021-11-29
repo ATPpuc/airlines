@@ -204,6 +204,23 @@ public class AirlineRepository {
         }
         return maior;
     }
+    
+    public Flight getShortDistanceFlight(){
+        Flight menor = null;
+
+        if (flights.length == 0){
+            return null;
+        }
+
+        menor=flights[0];
+
+        for (int i = 0 ; i < flights.length ; i++) {
+            if(flights[i].getDistance() < menor.getDistance()) {
+                menor = flights[i];
+            }
+        }
+        return menor;
+    }
 
     public Flight getMaxOccupiedSeatsFlight() {
         Flight maxOccupiedSeats = flights[0];
