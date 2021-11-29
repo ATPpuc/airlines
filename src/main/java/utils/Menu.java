@@ -127,7 +127,7 @@ public class Menu {
                 case 0: //0 - Sair
                     mainMenu();
                     break;
-                default:
+                default: //caso o user tenha dado um valor por leitor que nao seja compativel, ele cai aqui exibindo a mensagem
                     System.out.println("Resposta inválida");
                     break;
             }

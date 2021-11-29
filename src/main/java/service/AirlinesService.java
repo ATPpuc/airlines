@@ -43,19 +43,23 @@ public class AirlinesService {
         airlineRepository.savePassanger(passanger);
     }
 
+    //metodo que retorna todos os voos, imprimindo suas infos
     public void getAllFlights(){
         airlineRepository.getSavedFlightsToString();
     }
 
+    //retorna todas as informaçoes de todos os passageiros
     public void getAllPassangers(){
         airlineRepository.getAllPassangers();
     }
 
+    //pega o voo que tem menos passageiros
     public void getLessPassangersFlight() {
         Flight flight = airlineRepository.getLessPassangerFlight();
         System.out.println(flight.toString());
     }
 
+    //deleta um voo
     public void dropFlight() {
         System.out.println("Id do vôo que deseja excluir: ");
         Integer flightDrop = in.nextInt();
@@ -67,6 +71,7 @@ public class AirlinesService {
             System.out.println("Erro ao deletar");
     }
 
+    //deleta um passageiro
     public void dropPassanger() {
         System.out.println("Id do passageiro que deseja excluir: ");
         int passangerDrop = in.nextInt();
@@ -78,6 +83,7 @@ public class AirlinesService {
             System.out.println("Erro ao deletar");
     }
 
+    //atualiza um passageiro
     public void updatePassanger(){
         System.out.println("Insira o Id do passageiro que deseja alterar:");
         int id = in.nextInt();
@@ -92,22 +98,26 @@ public class AirlinesService {
             System.out.println("Erro ao alterar");
     }
 
+    //atualiza um voo
     public void updateFlight(){
 
     }
 
+    //procura todos os passageiros a partir de um voo especifico
     public void findAllPassengers(){
         System.out.println("Qual a id do voo que o sr quer buscar todos os passageiros?");
         int idFlight = in.nextInt();
         airlineRepository.findAllPassengersByFlight(idFlight);
     }
 
+    //pega o voo que tem a maior distancia
     public void getMaxDistanceFlight(){
         System.out.println("Analisando o voo mais longo..");
         Flight maxDistanceFlight = airlineRepository.getMaxDistanceFlight();
         System.out.println(maxDistanceFlight.toString());
     }
 
+    //pega o voo que tem a maior taxa de ocupaçao
     public void getMaxOccupiedSeatsFlight() {
         System.out.println("Analisando voo com mais assentos ocupados...");
         Flight flight = airlineRepository.getMaxOccupiedSeatsFlight();
