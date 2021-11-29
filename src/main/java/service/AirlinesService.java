@@ -35,7 +35,7 @@ public class AirlinesService {
         else
             System.out.println("Erro ao salvar");
     }
-
+    //esse metodo tem a funcao de salvar passageiro
     public void savePassanger(){
         //reune as infos do passanger
         Passanger passanger = new Passanger();
