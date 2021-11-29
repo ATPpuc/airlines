@@ -203,8 +203,9 @@ public class AirlineRepository {
         return maior;
     }
 
-    public Flight getShortDistanceFlight() {
+    public Flight getShortDistanceFlight(){
         Flight menor = null;
+        int indice =0;
 
         if (flights.length == 0) {
             return null;
