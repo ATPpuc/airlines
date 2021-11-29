@@ -27,7 +27,13 @@ public class AirlinesService {
         int id = in.nextInt();
         Flight flight = new Flight(id, distance, seats);
         //salva o voo na lista de voos, usando o repositorio
-        airlineRepository.saveFlight(flight);
+        boolean result = airlineRepository.saveFlight(flight);
+
+        if (result){
+            System.out.println("Salvo com sucesso!");
+        }
+        else
+            System.out.println("Erro ao salvar");
     }
 
     public void savePassanger(){
@@ -40,7 +46,11 @@ public class AirlinesService {
         in.nextLine();
 
         //salva o voo na lista de voos, usando o repositorio
-        airlineRepository.savePassanger(passanger);
+        boolean result = airlineRepository.savePassanger(passanger);
+        if (result) {
+            System.out.println("Salvo com sucesso!");
+        } else
+            System.out.println("Erro ao salvar");
     }
 
     //metodo que retorna todos os voos, imprimindo suas infos
@@ -61,14 +71,21 @@ public class AirlinesService {
 
     //deleta um voo
     public void dropFlight() {
-        System.out.println("Id do vôo que deseja excluir: ");
-        Integer flightDrop = in.nextInt();
-        boolean result = airlineRepository.dropFlight(flightDrop);
-        if(result){
-            System.out.println("Deletado com sucesso!");
+        System.out.println("Apagar o vôo deletará os passageiros, continuar? \n1-Sim \n2-Nao");
+        int op = in.nextInt();
+        if (op==0){
+            return;
         }
-        else
-            System.out.println("Erro ao deletar");
+        else if (op==1){
+            System.out.println("Id do vôo que deseja excluir: ");
+            Integer flightDrop = in.nextInt();
+            boolean result = airlineRepository.dropFlight(flightDrop);
+            if (result) {
+                System.out.println("Deletado com sucesso!");
+            } else
+                System.out.println("Erro ao deletar");
+        }
+        else System.out.println("Opção inválida");
     }
 
     //deleta um passageiro

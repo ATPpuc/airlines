@@ -32,18 +32,35 @@ public class AirlineRepository {
         return null;
     }
 
-    public void saveFlight(Flight flight){
+    public boolean saveFlight(Flight flight) {
         // cria um array com o tamanho do anterior incrementado de 1, e adiciona no fim o voo passado por parametro
-        Flight[] flightsTemp = new Flight[flights.length+1];
-        for (int i = 0; i < flights.length; i++){
-          flightsTemp[i] = flights[i];
+        //verifica a existencia de algum voo com o mesmo id
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i].getId() == flight.getId()) {
+                return false;
+            }
         }
-        flightsTemp[flightsTemp.length-1] = flight;
+
+        Flight[] flightsTemp = new Flight[flights.length + 1];
+        for (int i = 0; i < flights.length; i++) {
+            flightsTemp[i] = flights[i];
+        }
+        flightsTemp[flightsTemp.length - 1] = flight;
         flights = flightsTemp;
+        return true;
+
     }
 
     //so salva um passageiro se existe um voo disponivel pra ele
-    public void savePassanger(Passanger passanger){
+    public boolean savePassanger(Passanger passanger){
+
+        Passanger optionalPassanger = findPassanger(passanger.getId());
+        if (optionalPassanger != null){
+            return false;
+        }
+        if (flights.length==0){
+            return false;
+        }
 
         int targetFlight = -1;
         for(int i=0; i < flights.length;i++){
@@ -53,9 +70,10 @@ public class AirlineRepository {
             }
         }
         if (targetFlight==-1){
-            throw new RuntimeException("Sem voos disponiveis :)");
+            return false;
         }
         flights[targetFlight].addPassanger(passanger);
+        return true;
     }
 
     public boolean dropPassanger(int id) {
@@ -144,24 +162,27 @@ public class AirlineRepository {
         for (int i = 0; i< passangers.length; i++){
             System.out.println("Id: " + passangers[i].getId());
             System.out.println("Nome: " + passangers[i].getName());
+            System.out.println("---------------------------------------------------");
         }
     }
 
     public void getSavedFlightsToString() {
         Flight[] flights = getSavedFlights();
+        if (flights.length == 0){
+            System.out.println("Sem vôos salvos :(");
+            return;
+        }
         for (int i = 0; i< flights.length; i++){
             System.out.println("Id: " + flights[i].getId());
             System.out.println("Distancia: " + flights[i].getDistance());
             System.out.println("Assentos: " + flights[i].getSeats());
             System.out.println("Assentos Ocupados: " + flights[i].getOccupiedSeats());
             System.out.println("Passageiros: " + Arrays.toString(flights[i].getPassangers()));
+            System.out.println("---------------------------------------------------");
         }
     }
 
     public void findAllPassengersByFlight(int idFlight){
-        //TODO metodo;
-        System.out.println("implementar metodo");
-
         Flight flight = findFlight(idFlight);
         System.out.println("Ahh, achei, olha aqui seu voo:" +
                         Arrays.toString(flight.getPassangers()));
