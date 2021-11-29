@@ -15,6 +15,7 @@ public class AirlineRepository {
     public Passanger findPassanger(int id){
         for (int i = 0; i < flights.length; i++){
             int result = flights[i].findPassanger(id);
+
             if (result != -1){ //se achou, retorna o que achou :)
                 return flights[i].getPassangers()[result];
             }
@@ -23,7 +24,7 @@ public class AirlineRepository {
     }
 
     public Flight findFlight(int id){
-        for(int i =0; i< flights.length; i++){
+        for(int i =0; i < flights.length; i++){
             if (flights[i].getId() == id){
                 return flights[i];
             }
@@ -123,18 +124,19 @@ public class AirlineRepository {
     public void getAllPassangers() {
         int passangersNumber = 0;
 
-        for (Flight flight : flights) {
-            passangersNumber += flight.getOccupiedSeats();
+        for (int i =0;i < flights.length; i++) {
+            passangersNumber += flights[i].getOccupiedSeats();
         }
         if (passangersNumber == 0){
             System.out.println("Sem passageiros :(");
+            return;
         }
 
         Passanger[] passangers = new Passanger[passangersNumber];
         int passangerIndex = 0;
 
         for (int i=0; i < flights.length; i++){
-            for(int j=0; j<flights[i].getPassangers().length; j++){
+            for(int j = 0; j < flights[i].getOccupiedSeats(); j++){
                 passangers[passangerIndex] = flights[i].getPassangers()[j];
                 passangerIndex++;
             }
@@ -152,6 +154,7 @@ public class AirlineRepository {
             System.out.println("Distancia: " + flights[i].getDistance());
             System.out.println("Assentos: " + flights[i].getSeats());
             System.out.println("Assentos Ocupados: " + flights[i].getOccupiedSeats());
+            System.out.println("Passageiros: " + Arrays.toString(flights[i].getPassangers()));
         }
     }
 
@@ -190,5 +193,31 @@ public class AirlineRepository {
             }
         }
         return maxOccupiedSeats;
+    }
+
+    public boolean updateFlight(int id, double distance, int seats) {
+        Flight flight = findFlight(id);
+
+        //em caso de nao encontrar, retorna false
+        if (flight == null){
+            return false;
+        }
+
+        //se a quantidade de assentos ja ocupados for maior que a de assentos enviados para modificaçao, ele retorna false
+        else{
+            if (flight.getOccupiedSeats() > seats){
+                return false;
+            }
+            else{
+                for (int i =0; i < flights.length; i++){
+                    //percorre o vetor de voos salvos, quando encontrar ele modifica as informaçoes e retorna true
+                    if (flights[i].getId() == flight.getId() ){
+                        flights[i].setDistance(distance);
+                        flights[i].setSeats(seats);
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

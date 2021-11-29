@@ -50,7 +50,7 @@ public class Flight {
     public int findPassanger(int id){
 
         for (int i = 0; i<occupiedSeats;i++){
-            if (passangers[occupiedSeats].getId()== id){
+            if (passangers[i].getId()== id){
                 return i;
             }
         }

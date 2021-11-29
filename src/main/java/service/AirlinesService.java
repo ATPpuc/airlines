@@ -101,6 +101,19 @@ public class AirlinesService {
     //atualiza um voo
     public void updateFlight(){
 
+        System.out.println("Insira o Id do voo que deseja alterar: ");
+        int id = in.nextInt();
+        System.out.println("Insira a nova distância do vôo");
+        double distance = in.nextDouble();
+        System.out.println("Insira a nova quantidade de assentos: ");
+        int seats = in.nextInt();
+
+        boolean result = airlineRepository.updateFlight(id, distance, seats);
+        //mediante ao retorno, ele exibe a mensagem correta
+        if (result)
+            System.out.println("Alterado com sucesso!");
+        else
+            System.out.println("Erro ao alterar");
     }
 
     //procura todos os passageiros a partir de um voo especifico
