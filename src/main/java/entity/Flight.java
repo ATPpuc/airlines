@@ -21,8 +21,8 @@ public class Flight {
     }
 
     //adiciona um passageiro a um voo
-    public void addPassanger(Passanger passanger){
-        if (occupiedSeats>=seats){
+    public void addPassanger(Passanger passanger) {
+        if (occupiedSeats >= seats) {
             throw new RuntimeException("no seats left :)");
         }
         passangers[occupiedSeats] = passanger;
@@ -30,27 +30,27 @@ public class Flight {
     }
 
     //remove um passageiro de um voo
-    public boolean removePassanger(int id){
+    public boolean removePassanger(int id) {
         int target = findPassanger(id);
 
-        if (target==-1){
+        if (target == -1) {
             return false;
         }//acaba aq caso ele nao encontre nada
         //senao, o codigo segue
         passangers[target] = null;
 
-        for (int i = target+1; i<occupiedSeats;i++){
-            passangers[i-1] = passangers[i];
+        for (int i = target + 1; i < occupiedSeats; i++) {
+            passangers[i - 1] = passangers[i];
         }
-        passangers[occupiedSeats-1] = null;
+        passangers[occupiedSeats - 1] = null;
         occupiedSeats--;
         return true;
     }
 
-    public int findPassanger(int id){
+    public int findPassanger(int id) {
 
-        for (int i = 0; i<occupiedSeats;i++){
-            if (passangers[i].getId()== id){
+        for (int i = 0; i < occupiedSeats; i++) {
+            if (passangers[i].getId() == id) {
                 return i;
             }
         }

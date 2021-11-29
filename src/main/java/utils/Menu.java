@@ -62,7 +62,7 @@ public class Menu {
         }
     }
 
-    public void printLineSeparator(){
+    public void printLineSeparator() {
         System.out.println("--------------------------------------------------------------------------");
         System.out.println("--------------------------------------------------------------------------");
     }
@@ -73,11 +73,11 @@ public class Menu {
             printLineSeparator();
             System.out.println("Digite a sub opção desejada \n"
                     + "1 - Ver todos os vôos\n" +
-                      "2 - Ver os vôos com mais passageiros (assentos ocupados)\n" +
-                      "3 - Ver o vôo com menos passageiros\n" +
-                      "4 - Ver o vôo mais longo\n" +
-                      "5 - Ver o vôo mais curto\n" +
-                      "6 - Ver a média de ocupação dos vôos\n"
+                    "2 - Ver os vôos com mais passageiros (assentos ocupados)\n" +
+                    "3 - Ver o vôo com menos passageiros\n" +
+                    "4 - Ver o vôo mais longo\n" +
+                    "5 - Ver o vôo mais curto\n" +
+                    "6 - Ver a média de ocupação dos vôos\n"
                     + "0 - Sair");
             int subOp = in.nextInt();
             switch (subOp) {
@@ -107,13 +107,11 @@ public class Menu {
                     break;
 
             }
-        }
-
-        else if(op==4){
+        } else if (op == 4) {
             printLineSeparator();
             System.out.println("Digite a sub opção desejada \n"
                     + "1 - Ver todos os passageiros\n" +
-                      "2 - Buscar por vôo (exibe todos os passageiros)\n"
+                    "2 - Buscar por vôo (exibe todos os passageiros)\n"
                     + "0 - Sair");
             int subOp = in.nextInt();
             switch (subOp) {
