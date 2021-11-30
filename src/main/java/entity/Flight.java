@@ -50,13 +50,16 @@ public class Flight {
         return true;
     }
 
+    //procura por um passageiro a partir do id passado por parametro
     public int findPassanger(int id) {
-
+        //percorre o vetor de passageiros do voo buscando pelo id do passageiro
         for (int i = 0; i < occupiedSeats; i++) {
             if (passangers[i].getId() == id) {
+                //retorna a posiçao se encontrar
                 return i;
             }
         }
+        //retorna -1 se esta ruim
         return -1;
     }
 

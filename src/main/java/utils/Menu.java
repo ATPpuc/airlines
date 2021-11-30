@@ -42,10 +42,10 @@ public class Menu {
                     subMenu(op);
                     break;
                 case 5: //5 - Alterar Vôo
-                    airlinesService.updateFlight(); //check
+                    airlinesService.updateFlight();
                     break;
                 case 6: //6 - Alterar Passageiro
-                    airlinesService.updatePassanger(); //check
+                    airlinesService.updatePassanger();
                     break;
                 case 7: //7 - Excluir Vôo
                     airlinesService.dropFlight();

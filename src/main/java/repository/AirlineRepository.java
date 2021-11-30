@@ -3,9 +3,7 @@ package repository;
 import entity.Flight;
 import entity.Passanger;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 
 public class AirlineRepository {
@@ -141,47 +139,59 @@ public class AirlineRepository {
         return flights;
     }
 
+    //retorna o voo com a menor quantidade de passageiros
     public Flight getLessPassangerFlight() {
         Flight lessPassangerFlight = null;
 
+        //percorre o vetor de voos procurando pelo voo com a menor quantidade de assentos ocupados
         for (int i = 0; i < flights.length; i++) {
             if (lessPassangerFlight == null ||
                     flights[i].getOccupiedSeats() < lessPassangerFlight.getOccupiedSeats()) {
                 lessPassangerFlight = flights[i];
             }
         }
+        //retorna esse voo
         return lessPassangerFlight;
     }
 
+    //atualiza um passageiro
     public boolean updatePassanger(int id, String name) {
+        //procura pelo passageiro e armazena
         Passanger passanger = findPassanger(id);
         if (passanger != null) {
+            //setta no nome do passageiro com o nome passado por parametro
             passanger.setName(name);
-            return true;
+            return true; //retorna true
         }
+        //retorna false se algo der errado
         return false;
     }
 
+    //retorna todos os passageiros
     public void getAllPassangers() {
         int passangersNumber = 0;
 
+        //armazena a quantidade total de passageiros
         for (int i = 0; i < flights.length; i++) {
             passangersNumber += flights[i].getOccupiedSeats();
         }
         if (passangersNumber == 0) {
             System.out.println("Sem passageiros :(");
-            return;
+            return; //retorna se a quantidade de passageiros for 0
         }
 
+        //cria um vetor de passageiros com a quantidade de passageiros encontrada
         Passanger[] passangers = new Passanger[passangersNumber];
         int passangerIndex = 0;
 
+        //percorre o vetor de voos e de passageiros, colocando na posiçao corrente do vetor aquele passageiro
         for (int i = 0; i < flights.length; i++) {
             for (int j = 0; j < flights[i].getOccupiedSeats(); j++) {
                 passangers[passangerIndex] = flights[i].getPassangers()[j];
                 passangerIndex++;
             }
         }
+        //percorre o vetor de passageiros criado printando os valores armazenados nele
         for (int i = 0; i < passangers.length; i++) {
             System.out.println("Id: " + passangers[i].getId());
             System.out.println("Nome: " + passangers[i].getName());
@@ -189,6 +199,7 @@ public class AirlineRepository {
         }
     }
 
+    //retorna todos os valores dos voos salvos em formato string
     public void getSavedFlightsToString() {
         Flight[] flights = getSavedFlights();
         if (flights.length == 0) {
@@ -205,21 +216,25 @@ public class AirlineRepository {
         }
     }
 
+    //procura todos os passageiros de um voo especifico
     public void findAllPassengersByFlight(int idFlight) {
         Flight flight = findFlight(idFlight);
         System.out.println("Ahh, achei, olha aqui os passageiros do seu voo:" +
                 Arrays.toString(flight.getPassangers()));
     }
 
+    //retorna o voo com a maior distancia
     public Flight getMaxDistanceFlight() {
         Flight maior = null;
 
+        //retorna nulo se os voos nao existirem
         if (flights.length == 0) {
             return null;
         }
 
         maior = flights[0];
 
+        //percorre comparando a distancia, retorna o maior
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getDistance() > maior.getDistance()) {
                 maior = flights[i];
@@ -228,6 +243,7 @@ public class AirlineRepository {
         return maior;
     }
 
+    //retorna o voo com a menor distancia
     public Flight getShortDistanceFlight() {
         Flight menor = null;
 
@@ -237,6 +253,7 @@ public class AirlineRepository {
 
         menor = flights[0];
 
+        //percorre o vetor comparando os valores
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getDistance() < menor.getDistance()) {
                 menor = flights[i];
@@ -245,6 +262,7 @@ public class AirlineRepository {
         return menor;
     }
 
+    //procura pelo voo com a maior ocupoaçao
     public Flight getMaxOccupiedSeatsFlight() {
         Flight maxOccupiedSeats = flights[0];
 
@@ -253,9 +271,11 @@ public class AirlineRepository {
                 maxOccupiedSeats = flights[i];
             }
         }
+        //retorna o objeto de voo com a maior taxa de ocupaçao
         return maxOccupiedSeats;
     }
 
+    //altera um voo
     public boolean updateFlight(int id, double distance, int seats) {
         Flight flight = findFlight(id);
 
@@ -281,6 +301,7 @@ public class AirlineRepository {
         return true;
     }
 
+    //retorna a media de ocupaçao dos voos
     public double getAverageOccupiedSeatsFlight() {
         double occupiedSeats = 0;
         double flightNumber = flights.length;
@@ -288,11 +309,13 @@ public class AirlineRepository {
         for (int i = 0; i < flights.length; i++) {
             occupiedSeats += flights[i].getOccupiedSeats();
         }
+        //divide a quantidade de assentos ocupados pela quantidade de voos
         double avgOccupiedSeats = occupiedSeats / flightNumber;
 
         return avgOccupiedSeats;
     }
 
+    //retorna a quantidade de assentos ocupados
     public double getOccupiedSeatsNumber(){
         double occupiedSeats = 0;
         for (int i = 0; i < flights.length; i++) {
@@ -301,6 +324,7 @@ public class AirlineRepository {
         return occupiedSeats;
     }
 
+    //retorna a quantidade de voos
     public double getFlightsNumber(){
         return flights.length;
     }
