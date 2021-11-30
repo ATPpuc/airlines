@@ -138,6 +138,7 @@ public class AirlinesService {
         System.out.println("Qual a id do voo que o sr quer buscar todos os passageiros?");
         int idFlight = in.nextInt();
         airlineRepository.findAllPassengersByFlight(idFlight);
+        //comentario aleatorio
     }
 
     //pega o voo que tem a maior distancia
