@@ -104,27 +104,34 @@ public class AirlineRepository {
 
     public boolean dropFlight(int id) {
         int target = -1;
-
+        //procura pelo voo a ser deletado
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getId() == id) {
                 target = i;
+                //se encontrar, atribui o valor da posiçao no vetor ao target
                 break;
             }
         }
 
         if (target == -1) {
             return false;
+            //se nao encontrou, retorna false
         }
 
+        //cria um vetor novo com o tamanho do vetor de voos -1
         Flight[] flightTemp = new Flight[flights.length - 1];
 
+        //itera o vetor de voos -1
         for (int i = 0; i < flightTemp.length; i++) {
+            //se a posiçao no vetor for maior ou igual que target, coloca o voo na posiçao +1 no indice atual do vetor temporario
             if (i >= target) {
                 flightTemp[i] = flights[i + 1];
             } else {
+                //senao, atribui normalmente
                 flightTemp[i] = flights[i];
             }
         }
+        //atribui o valor de flightTemp para o vetor de flights e retorna true
         flights = flightTemp;
         return true;
     }
