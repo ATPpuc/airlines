@@ -96,7 +96,7 @@ public class Menu {
                 case 5: //5 - Ver o vôo mais curto
                     airlinesService.getShortDistanceFlight();
                     break;
-                case 6: //6 - Ver a média de ocupação dos vôos
+                case 6: //6 - Ver a média de ocupação dos voos
                     airlinesService.getAverageOccupiedSeatsFlight();
                     break;
                 case 0: //0 - Sair

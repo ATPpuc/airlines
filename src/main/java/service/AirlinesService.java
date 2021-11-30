@@ -151,21 +151,22 @@ public class AirlinesService {
     }
 
 
-//    public void getAverageValues(){
-//        var x = getAllFlights();
-//        var y = getAllPassangers();
-//        var z = y/x;
-//        return z;
-//    }
-//
-//    //ver a média de ocupação
-//    public void getAverageOccupiedSeatsFlight() {
-//        System.out.println("Analisando a média de ocupação dos vôos...");
-//        Flight flight = airlineRepository.getAvaregeOccupiedSeatsFlight();
-//        System.out.println("Total de voos: " + getAllFlights());
-//        System.out.println("Total de passageiros: " + getAllPassangers());
-//        System.out.println("A média de passageiros por voo é: " + getAverageValues());
-//    }
+/*    public void getAverageValues(){
+        var x = getAllFlights();
+        var y = getAllPassangers();
+        var z = y/x;
+        return z;
+    }
+
+    //ver a média de ocupação
+    public void getAverageOccupiedSeatsFlight() {
+        System.out.println("Analisando a média de ocupação dos vôos...");
+        Flight flight = airlineRepository.getAvaregeOccupiedSeatsFlight();
+        System.out.println("Total de voos: " + getAllFlights());
+        System.out.println("Total de passageiros: " + getAllPassangers());
+        System.out.println("A média de passageiros por voo é: " + getAverageValues());
+    }
+ */
 
     //pega o voo que tem a maior taxa de ocupaçao
     public void getMaxOccupiedSeatsFlight() {
