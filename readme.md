@@ -10,4 +10,4 @@ Desenvolvido por
 - Ted Sá
 - André Felipe
 - Fernanda Torres
-- Alex Silva
+- Alex Rodrigues
