@@ -182,7 +182,7 @@ public class AirlineRepository {
 
     public void findAllPassengersByFlight(int idFlight) {
         Flight flight = findFlight(idFlight);
-        System.out.println("Ahh, achei, olha aqui seu voo:" +
+        System.out.println("Ahh, achei, olha aqui os passageiros do seu voo:" +
                 Arrays.toString(flight.getPassangers()));
     }
 
@@ -203,7 +203,7 @@ public class AirlineRepository {
         return maior;
     }
 
-    public Flight getShortDistanceFlight(){
+    public Flight getShortDistanceFlight() {
         Flight menor = null;
 
         if (flights.length == 0) {
@@ -254,5 +254,29 @@ public class AirlineRepository {
             }
         }
         return true;
+    }
+
+    public double getAverageOccupiedSeatsFlight() {
+        double occupiedSeats = 0;
+        double flightNumber = flights.length;
+
+        for (int i = 0; i < flights.length; i++) {
+            occupiedSeats += flights[i].getOccupiedSeats();
+        }
+        double avgOccupiedSeats = occupiedSeats / flightNumber;
+
+        return avgOccupiedSeats;
+    }
+
+    public double getOccupiedSeatsNumber(){
+        double occupiedSeats = 0;
+        for (int i = 0; i < flights.length; i++) {
+            occupiedSeats += flights[i].getOccupiedSeats();
+        }
+        return occupiedSeats;
+    }
+
+    public double getFlightsNumber(){
+        return flights.length;
     }
 }

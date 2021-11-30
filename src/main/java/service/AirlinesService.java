@@ -16,7 +16,7 @@ public class AirlinesService {
     public AirlineRepository airlineRepository = new AirlineRepository();
     public Scanner in = new Scanner(System.in);
 
-    public void saveFlight(){
+    public void saveFlight() {
         //reune as infos do voo
 
         System.out.println("Distância do vôo:");
@@ -29,14 +29,13 @@ public class AirlinesService {
         //salva o voo na lista de voos, usando o repositorio
         boolean result = airlineRepository.saveFlight(flight);
 
-        if (result){
+        if (result) {
             System.out.println("Salvo com sucesso!");
-        }
-        else
+        } else
             System.out.println("Erro ao salvar");
     }
 
-    public void savePassanger(){
+    public void savePassanger() {
         //reune as infos do passanger
         Passanger passanger = new Passanger();
         System.out.println("Id do Passageiro:");
@@ -54,12 +53,12 @@ public class AirlinesService {
     }
 
     //metodo que retorna todos os voos, imprimindo suas infos
-    public void getAllFlights(){
+    public void getAllFlights() {
         airlineRepository.getSavedFlightsToString();
     }
 
     //retorna todas as informaçoes de todos os passageiros
-    public void getAllPassangers(){
+    public void getAllPassangers() {
         airlineRepository.getAllPassangers();
     }
 
@@ -73,10 +72,9 @@ public class AirlinesService {
     public void dropFlight() {
         System.out.println("Apagar o vôo deletará os passageiros, continuar? \n1-Sim \n2-Nao");
         int op = in.nextInt();
-        if (op==0){
+        if (op == 0) {
             return;
-        }
-        else if (op==1){
+        } else if (op == 1) {
             System.out.println("Id do vôo que deseja excluir: ");
             Integer flightDrop = in.nextInt();
             boolean result = airlineRepository.dropFlight(flightDrop);
@@ -84,8 +82,7 @@ public class AirlinesService {
                 System.out.println("Deletado com sucesso!");
             } else
                 System.out.println("Erro ao deletar");
-        }
-        else System.out.println("Opção inválida");
+        } else System.out.println("Opção inválida");
     }
 
     //deleta um passageiro
@@ -93,15 +90,14 @@ public class AirlinesService {
         System.out.println("Id do passageiro que deseja excluir: ");
         int passangerDrop = in.nextInt();
         boolean result = airlineRepository.dropPassanger(passangerDrop);
-        if(result){
+        if (result) {
             System.out.println("Deletado com sucesso!");
-        }
-        else
+        } else
             System.out.println("Erro ao deletar");
     }
 
     //atualiza um passageiro
-    public void updatePassanger(){
+    public void updatePassanger() {
         System.out.println("Insira o Id do passageiro que deseja alterar:");
         int id = in.nextInt();
         in.nextLine();
@@ -116,7 +112,7 @@ public class AirlinesService {
     }
 
     //atualiza um voo
-    public void updateFlight(){
+    public void updateFlight() {
 
         System.out.println("Insira o Id do voo que deseja alterar: ");
         int id = in.nextInt();
@@ -134,25 +130,26 @@ public class AirlinesService {
     }
 
     //procura todos os passageiros a partir de um voo especifico
-    public void findAllPassengers(){
+    public void findAllPassengers() {
         System.out.println("Qual a id do voo que o sr quer buscar todos os passageiros?");
         int idFlight = in.nextInt();
         airlineRepository.findAllPassengersByFlight(idFlight);
     }
 
     //pega o voo que tem a maior distancia
-    public void getMaxDistanceFlight(){
+    public void getMaxDistanceFlight() {
         System.out.println("Analisando o voo mais longo..");
         Flight maxDistanceFlight = airlineRepository.getMaxDistanceFlight();
         System.out.println(maxDistanceFlight.toString());
     }
 
     //pega o voo que tem a menor distancia
-    public void getShortDistanceFlight(){
+    public void getShortDistanceFlight() {
         System.out.println("Analisando o voo mais curto..");
         Flight shortDistanceFlight = airlineRepository.getShortDistanceFlight();
         System.out.println(shortDistanceFlight.toString());
     }
+
 
 //    public void getAverageValues(){
 //        var x = getAllFlights();
@@ -176,7 +173,14 @@ public class AirlinesService {
         Flight flight = airlineRepository.getMaxOccupiedSeatsFlight();
         System.out.println("Id do Voo: " + flight.getId());
         System.out.println("Distancia do voo: " + flight.getDistance());
-        System.out.println("Assentos ocupados: "+ flight.getOccupiedSeats());
+        System.out.println("Assentos ocupados: " + flight.getOccupiedSeats());
         System.out.println("Passageiros: " + Arrays.toString(flight.getPassangers()));
+    }
+
+    public void getAverageOccupiedSeatsFlight() {
+        double average = airlineRepository.getAverageOccupiedSeatsFlight();
+        System.out.println("Quantidade de voos: "+ airlineRepository.getFlightsNumber());
+        System.out.println("Quantidade de assentos ocupados: "+ airlineRepository.getOccupiedSeatsNumber());
+        System.out.println("Ocupção média de voos (Quantidade de assentos ocupados / número de voos) \n: " + average);
     }
 }
