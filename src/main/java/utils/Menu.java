@@ -97,7 +97,7 @@ public class Menu {
                     airlinesService.getShortDistanceFlight();
                     break;
                 case 6: //6 - Ver a média de ocupação dos vôos
-                    //TODO implementar metodo --ted
+                    airlinesService.getAverageOccupiedSeatsFlight();
                     break;
                 case 0: //0 - Sair
                     mainMenu();
@@ -119,7 +119,6 @@ public class Menu {
                     airlinesService.getAllPassangers();
                     break;
                 case 2: //2 - buscar por vôo (exibe todos os passageiros)
-                    //TODO implementar metodo --ted
                     airlinesService.findAllPassengers();
                     break;
                 case 0: //0 - Sair
