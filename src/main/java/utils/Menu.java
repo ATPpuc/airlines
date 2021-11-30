@@ -119,7 +119,6 @@ public class Menu {
                     airlinesService.getAllPassangers();
                     break;
                 case 2: //2 - buscar por vôo (exibe todos os passageiros)
-                    //TODO implementar metodo --ted
                     airlinesService.findAllPassengers();
                     break;
                 case 0: //0 - Sair
