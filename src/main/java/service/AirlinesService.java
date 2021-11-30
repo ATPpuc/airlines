@@ -179,8 +179,8 @@ public class AirlinesService {
 
     public void getAverageOccupiedSeatsFlight() {
         double average = airlineRepository.getAverageOccupiedSeatsFlight();
-        System.out.println("Quantidade de voos: "+ airlineRepository.getFlightsNumber());
-        System.out.println("Quantidade de assentos ocupados: "+ airlineRepository.getOccupiedSeatsNumber());
+        System.out.println("Quantidade de voos: " + airlineRepository.getFlightsNumber());
+        System.out.println("Quantidade de assentos ocupados: " + airlineRepository.getOccupiedSeatsNumber());
         System.out.println("Ocupção média de voos (Quantidade de assentos ocupados / número de voos) \n: " + average);
     }
 }

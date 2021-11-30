@@ -37,12 +37,15 @@ public class Flight {
             return false;
         }//acaba aq caso ele nao encontre nada
         //senao, o codigo segue
+        //aponta a posiçao do passageiro a ser removido pra null
         passangers[target] = null;
-
+        //itera os voos, reorganizando-os
         for (int i = target + 1; i < occupiedSeats; i++) {
             passangers[i - 1] = passangers[i];
         }
+        //apaga a ultima posiçao
         passangers[occupiedSeats - 1] = null;
+        //reduz a quantidade de assentos ocupados
         occupiedSeats--;
         return true;
     }

@@ -11,8 +11,9 @@ import java.util.List;
 public class AirlineRepository {
     Flight[] flights = new Flight[0];
 
-
+    //procura por um passageiro, mediante ao Id passado ao método.
     public Passanger findPassanger(int id) {
+        //itera pelos voos buscando o passageiro por meio do metodo findPassagner da classe Flight
         for (int i = 0; i < flights.length; i++) {
             int result = flights[i].findPassanger(id);
 
@@ -20,32 +21,40 @@ public class AirlineRepository {
                 return flights[i].getPassangers()[result];
             }
         }
+        //retorna nulo na busca que nao encontrou nada
         return null;
     }
 
+    //procura por um voo por meio do Id fornecido
     public Flight findFlight(int id) {
+        //itera ate encontrar o voo com aquela id
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getId() == id) {
                 return flights[i];
             }
         }
+        //retorna nulo se nao encontrar
         return null;
     }
 
+    //salva um voo
     public boolean saveFlight(Flight flight) {
         // cria um array com o tamanho do anterior incrementado de 1, e adiciona no fim o voo passado por parametro
         //verifica a existencia de algum voo com o mesmo id
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getId() == flight.getId()) {
+                //retorna false se encontrar
                 return false;
             }
         }
-
+        //cria um vetor temporario com o tamanho do vetor antigo somado de 1, para colocar um novo voo disponivel
         Flight[] flightsTemp = new Flight[flights.length + 1];
         for (int i = 0; i < flights.length; i++) {
+            //transporta todos os voos do vetor antigo para o vetor novo (vetor antigo +1)
             flightsTemp[i] = flights[i];
         }
         flightsTemp[flightsTemp.length - 1] = flight;
+        //depois de salvar o novo voo no final do vetor, diz que o vetor de voos recebe o vetor com o novo voo e retorna true
         flights = flightsTemp;
         return true;
     }
@@ -53,35 +62,42 @@ public class AirlineRepository {
     //so salva um passageiro se existe um voo disponivel pra ele
     public boolean savePassanger(Passanger passanger) {
 
+        //procura por um passageiro com o mesmo id do que pretende ser salvo
         Passanger optionalPassanger = findPassanger(passanger.getId());
         if (optionalPassanger != null) {
             return false;
+            //se achar, retorna false
         }
         if (flights.length == 0) {
+            //se nao houver nenhum voo, retorna false
             return false;
         }
 
         int targetFlight = -1;
+        //verifica a disponibilidade de voos com assentos disponiveis
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].getSeats() > flights[i].getOccupiedSeats()) {
                 targetFlight = i;
                 break;
             }
         }
+        //se nao achar voo disponivel, retorna false
         if (targetFlight == -1) {
             return false;
         }
+        //se encontrar um voo disponivel, adiciona o passageiro naquele voo e retorna true
         flights[targetFlight].addPassanger(passanger);
         return true;
     }
 
     public boolean dropPassanger(int id) {
-
+        //passa para o vetor de voos o passageiro a ser removido, se retornar sucesso ele retorna true
         for (int i = 0; i < flights.length; i++) {
             if (flights[i].removePassanger(id)) {
                 return true;
             }
         }
+        //em caso de falha, retorna false
         return false;
     }
 
