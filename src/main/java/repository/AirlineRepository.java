@@ -136,6 +136,7 @@ public class AirlineRepository {
         return true;
     }
 
+    //retorna os voos salvos
     public Flight[] getSavedFlights() {
         return flights;
     }
