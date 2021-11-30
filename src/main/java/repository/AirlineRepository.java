@@ -219,7 +219,7 @@ public class AirlineRepository {
     //procura todos os passageiros de um voo especifico
     public void findAllPassengersByFlight(int idFlight) {
         Flight flight = findFlight(idFlight);
-        System.out.println("Ahh, achei, olha aqui os passageiros do seu voo:" +
+        System.out.println("Ahh, achei, olha aqui os passageiros do seu voo: \n" +
                 Arrays.toString(flight.getPassangers()));
     }
 
