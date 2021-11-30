@@ -53,6 +53,7 @@ public class AirlineRepository {
             //transporta todos os voos do vetor antigo para o vetor novo (vetor antigo +1)
             flightsTemp[i] = flights[i];
         }
+        //adiciona no fim do novo vetor o novo voo
         flightsTemp[flightsTemp.length - 1] = flight;
         //depois de salvar o novo voo no final do vetor, diz que o vetor de voos recebe o vetor com o novo voo e retorna true
         flights = flightsTemp;
